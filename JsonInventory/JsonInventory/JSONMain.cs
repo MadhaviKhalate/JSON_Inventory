@@ -12,19 +12,40 @@ namespace JsonInventory
         JsonModel JsonModel = new JsonModel();
         List<JsonModel> InventoryList = new List<JsonModel>();
 
-        public void Convert(string JFilePath)
+        public void ConvertMethod(string JFilePath)
         {
-            using (StreamReader reader = new StreamReader(JFilePath))
-            {
-                var json = reader.ReadToEnd();
-                var items = JsonConvert.DeserializeObject<List<JsonModel>>(json);
-                Console.WriteLine("Item     Price     Weight   Total Value");
+            FactoryModel model = new FactoryModel();
+            List<JsonModel> Rice;
+            List<JsonModel> Wheat;
+            List<JsonModel> Pulses;
 
-                foreach (var objects in items)
+            using (StreamReader file = new StreamReader(JFilePath))
+            {
+                var json = file.ReadToEnd();
+                FactoryModel item = JsonConvert.DeserializeObject<FactoryModel>(json);
+                Rice = item.Rice;
+                Wheat = item.Wheat;
+                Pulses = item.Pulses;
+                Console.WriteLine("Which Item you want check:\n1.Rice\n2.Wheat\n3.Pulses");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Item \t Price \t weight");
+                switch (choice)
                 {
-                    double value = objects.price * objects.weight;
-                    Console.WriteLine(objects.name + " \t " + objects.price + " \t " + objects.weight 
-                        +" \t " + value);
+                    case 1:
+                        foreach (var contact in Rice)
+                            Console.WriteLine(contact.name + " \t " + contact.price + " \t " + contact.weight);
+                        break;
+                    case 2:
+                        foreach (var contact in Wheat)
+                            Console.WriteLine(contact.name + " \t " + contact.price + " \t " + contact.weight);
+                        break;
+                    case 3:
+                        foreach (var contact in Pulses)
+                            Console.WriteLine(contact.name + " \t " + contact.price + " \t " + contact.weight);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
                 }
             }
         }
