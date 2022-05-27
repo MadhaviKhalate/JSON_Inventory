@@ -3,8 +3,7 @@
 public class Program
 {
     public static void Main(string[] args)
-    {
-        JsonInventory.JSONMain json = new JsonInventory.JSONMain();
+    { 
         var log = NLog.LogManager.GetCurrentClassLogger();
         log.Warn("Enter choice in integer only.");
         Console.WriteLine("Which JSON you want to view:\n1.Inventoy Management\n2.Stock Account");
