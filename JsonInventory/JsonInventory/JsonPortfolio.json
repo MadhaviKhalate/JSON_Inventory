@@ -1,0 +1,17 @@
+[
+  {
+    "sName": "TCS",
+    "noOfShares": "100",
+    "sharePrice": "260"
+  },
+  {
+    "sName": "Infosys",
+    "noOfShares": "120",
+    "sharePrice": "480"
+  },
+  {
+    "sName": "HCL",
+    "noOfShares": "80",
+    "sharePrice": "340"
+  }
+]
